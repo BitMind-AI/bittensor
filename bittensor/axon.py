@@ -1218,6 +1218,8 @@ class AxonMiddleware(BaseHTTPMiddleware):
         # based on the request name obtained from the URL path.
         request_synapse = self.axon.forward_class_types.get(request_name)
         if request_synapse is None:
+            print(request.client.host)
+            print(request.headers)
             raise UnknownSynapseError(
                 f"Synapse name '{request_name}' not found. Available synapses {list(self.axon.forward_class_types.keys())}"
             )
